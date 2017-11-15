@@ -1,0 +1,71 @@
+1.
++-------------------+      +------------------+     +-----------------+
+|   user            |      |   order          |     |   restaurant    |
++-------------------+      +------------------+     +-----------------+
+|  id               |      | user_id          |     |  name           |
+|  user             |1    m|items             |m   m|  id             |
+|                   +------+ id               +-----+                 |
+|                   |      |                  |     |                 |
+|                   |      |                  |     |                 |
+|                   |      |                  |     |                 |
+|                   |      |                  |     |                 |
++-------------------+      +------------------+     +-----------------+
+
+                                           +-------------------+
+                                           |   list_of_orders  |
+                                           +-------------------+
+                                           |  order_id         |
+                                           |  restaurant_id    |
+                                           |                   |
+                                           |                   |
+                                           |                   |
+                                           |                   |
+                                           +-------------------+
+
+A single instance of a user can have multiple orders, and a single instance of an order can go to many restaurants
+
+2. A single instance of an airline can have multiple flights, a single instance of a flight can have multiple passengers, and crew.  passengers and crew cannot be on multiple flights
+
++----------------+    +------------------+    +---------------+
+|  airline       |    |   flight         |    |  crew         |
++----------------+    +------------------+    +---------------+
+| name           |1  m|  name            |1  m|   id          |
+| id             +----+  id              +----+   flight_id   |
+|                |    |  airline_id      |    |   name        |
+|                |    |                  |    |               |
+|                |    |                  |    |               |
+|                |    |                  |    |               |
++----------------+    +------------------+    +---------------+
+                                    |1
+                                    |
+                                    |         +---------------+
+                                    |         |   passenger   |
+                                    |         |               |
+                                    |        m|  flight_id    |
+                                    +---------+  id           |
+                                              |  name         |
+                                              |               |
+                                              |               |
+                                              +---------------+
+
+3. an instance of an artists, can post multiple tracks, have multiple listeners, and an instance of a listener can have multiple artists
+
++--------------+    +---------------+
+|  artist      |    |   tracks      |
++--------------+1  m+---------------+
+| id           +----+  id           |
+| name         |    |  title        |
+|              |    |  artist_id    |
+|              |    |               |
+|              |    |               |
++--------------+    +---------------+
+      |m
+      |m            +---------------+
++--------------+    |subscriptions  |
+|  listener    |    +---------------+
++--------------+    | artist_id     |
+| id           |    | listener_id   |
+| name         |    |               |
+|              |    |               |
+|              |    +---------------+
++--------------+
